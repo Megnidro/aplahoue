@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %} {% endblock %}
+
+{% block content %}
+
+ <div class="page-heading header-text">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1>Actualité</h1>
+            <span>bienvenue sur notre file d'actualité</span>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+     <div class="services">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h2>Contôle Qualité <em>Génie Civil</em></h2>
+              <span>BIENVENUE SUR NOTRE FILE D'ACTUALITÉ</span>
+            </div>
+          </div>
+          {% for post in posts %}
+            <br>
+          <div class="col-md-4">
+            <div class="service-item">
+              <img src="{{ post.photo.url }}" alt="{{ post.photo}}">
+              <div class="down-content">
+                <h4>{{ post.title }}</h4>
+                <p>{{ post.description|safe|truncatewords:15}}</p>
+                <a href="" class="filled-button">Read More</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+             {% if is_paginated %}
+    <div class="pagination">
+           {% if page_obj.has_previous %}
+               <a href="?page={{ page_obj.previous_page_number }}">Précédente</a>
+           {% endif %}
+           Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }}
+           {% if page_obj.has_next %}
+              — <a href="?page={{ page_obj.next_page_number }}">Suivante</a>
+           {% endif %}
+
+    </div>
+            <br>
+                   {% endif %}
+
+          </div>
+        </div>
+      </div>
+<br> <br> <br>
+{% endblock %}
