@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %} {% endblock %}
+
+{% block content %}
+
+ <div class="page-heading header-text">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1>Nos valeurs</h1>
+                          <span>Parce que nous sommes consciens de l'enjeu que nous representons pour le monde entier </span>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+     <div class="services">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h2>Pourquoi choir <em>Contrôle Qaulité</em></h2>
+            </div>
+          </div>
+          {% for post in posts %}
+            <br>
+          <div class="col-md-4">
+            <div class="service-item">
+              <img src="{{ post.photo.url }}" alt="{{ post.photo}}">
+              <div class="down-content">
+                <h4>{{ post.title }}</h4>
+                <p>{{ post.description|safe|truncatewords:300}}</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+    </div>
+          </div>
+        </div>
+      </div>
+<br> <br> <br>
+{% endblock %}
